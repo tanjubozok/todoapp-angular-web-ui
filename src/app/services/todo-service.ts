@@ -3,6 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { Todo } from '../models/todo';
 import { TodoAdd } from '../models/todo-add';
+import { TodoUpdate } from '../models/todo-update';
 
 @Injectable({
   providedIn: 'root',
@@ -29,9 +30,9 @@ export class TodoService {
       .pipe(map((response) => response.status == 201));
   }
 
-  update(todo: TodoAdd) {
+  update(todo: TodoUpdate) {
     return this.http
-      .put<Response>(`${this.baseUrl}/api/todos`, todo, {
+      .put<Response>(`${this.baseUrl}/api/todos/${todo.id}`, todo, {
         observe: 'response',
       })
       .pipe(map((response) => response.status == 204));
@@ -48,7 +49,7 @@ export class TodoService {
   isCompleted(id: number) {
     return this.http
       .put<Response>(
-        `${this.baseUrl}/api/todos/${id}`,
+        `${this.baseUrl}/api/todos/isCompleted/${id}`,
         {},
         {
           observe: 'response',
