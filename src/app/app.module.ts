@@ -9,6 +9,7 @@ import { NavbarComponent } from './pages/navbar/navbar.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { TodoListComponent } from './pages/todo-list/todo-list.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,12 @@ import { TodoListComponent } from './pages/todo-list/todo-list.component';
     NavbarComponent,
     TodoListComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   providers: [{ provide: 'BASE_API_URL', useValue: environment.baseUrl }],
   bootstrap: [AppComponent],
 })

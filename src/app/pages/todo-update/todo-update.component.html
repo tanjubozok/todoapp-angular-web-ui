@@ -1,1 +1,16 @@
-<p>todo-update works!</p>
+<div class="container mt-4">
+    <div class="row">
+        <h2>Güncellenecek iş</h2>
+        <form [formGroup]="todoForm" (ngSubmit)="update()">
+            <div class="mb-3">
+                <label for="">İş Ekle</label>
+                <textarea formControlName="content" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-success">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    Ekle</button>
+            </div>
+        </form>
+    </div>
+</div>
